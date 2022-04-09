@@ -34,8 +34,10 @@ jobs:
           echo The env is
           echo ${{ secrets.TEST }}
           
+      - if: ${{ env.TEST == ''}}
+        run: echo No, the env is not available
+          
       - if: ${{ env.TEST != ''}}
         run: echo Yes, the env is available
         
-      - if: ${{ env.TEST == ''}}
-        run: echo No, the env is not available
+      
