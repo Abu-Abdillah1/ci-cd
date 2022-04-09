@@ -22,6 +22,8 @@ jobs:
     environment: test
     env: 
       TEST: ${{ secrets.TEST }}
+      TEST2: ${{ secrets.TEST2 }}
+      TEST3: ${{ secrets.TEST3 }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -34,10 +36,13 @@ jobs:
           echo The env is
           echo ${{ secrets.TEST }}
           
-      - if: ${{ env.TEST == ''}}
-        run: echo No, the env is not available
-          
       - if: ${{ env.TEST != ''}}
+        run: echo Yes, the env is available
+          
+      - if: ${{ env.TEST3 != ''}}
+        run: echo Yes, the env is available
+        
+      - if: ${{ env.TEST2 != ''}}
         run: echo Yes, the env is available
         
       
