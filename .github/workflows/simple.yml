@@ -31,3 +31,6 @@ jobs:
         run: |
           echo The env is
           echo ${{ secrets.TEST }}
+          
+      - if: ${{ secrets.TEST != ''}}
+        run: echo Yes, the env is available
